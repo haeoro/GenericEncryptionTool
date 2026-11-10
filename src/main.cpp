@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------------
-*   ``~Random number generator written by haeoro~``
+*   ``~CLI based encryption tool written by haeoro~``
 *
 *   getRandNumber() simply generates a random number when called.
 ------------------------------------------------------------------------------*/
