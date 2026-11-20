@@ -8,10 +8,22 @@
 #include <ctime>
 #include <string>
 #include "random.h"
+#include <windows.h>
+#include <vector>
 
-int main()
+int main(int argc, char *argv[])
 {
-    std::cout << randnum();
+    std::vector<int> test;
+    int sIndex = 0;
+    int argLength = strlen(argv[1]);
+    while ( sIndex != argLength )
+    {
+        Sleep(1000);
+        int randNum = randnum();
+        test.append(randNum);
+        std::cout << sIndex << " cipher " << ((char)(argv[1][sIndex] + randNum)) << '\n';
+        sIndex++;
+    }
 }
 
 /*
@@ -27,6 +39,7 @@ notes!
 
 ~ to-do
 
-    do header documentation for random.h
+    ~ do header documentation for random.h
+    ~ make it generate a key.
 
 */
