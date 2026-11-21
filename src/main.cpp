@@ -11,19 +11,35 @@
 #include <windows.h>
 #include <vector>
 
+int usage()
+{
+    std::cout << "toolname -e MESSAGE\n";
+    return 1;
+}
+
 int main(int argc, char *argv[])
 {
-    std::vector<int> test;
+    std::vector<int> key = {};
+
+    if (argc < 2)
+    {
+        usage();
+        return 1;
+    }
     int sIndex = 0;
-    int argLength = strlen(argv[1]);
+    int argLength = strlen(argv[2]);
     while ( sIndex != argLength )
     {
+        // while this is going do encrypting... then display decryption key
         Sleep(1000);
         int randNum = randnum();
-        test.append(randNum);
-        std::cout << sIndex << " cipher " << ((char)(argv[1][sIndex] + randNum)) << '\n';
+        auto pos = key.begin();
+        pos = key.insert(pos, randNum);
+        std::cout << sIndex << " cipher " << ((char)(argv[2][sIndex] + randNum)) << '\n';
         sIndex++;
+        pos++;
     }
+    std::cout << key[0];
 }
 
 /*
@@ -40,6 +56,8 @@ notes!
 ~ to-do
 
     ~ do header documentation for random.h
-    ~ make it generate a key.
+    ~ append each cipher randnum to a character array
+    then display the full cipher key containing all randnum gens
+    to the screen after everything has been encrypted along with the ciphertext
 
 */
